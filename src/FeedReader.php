@@ -16,10 +16,12 @@ class FeedReader
      * 
      * @return \SimplePie
      */
-    public function read($url, $configuration = 'default')
+    public function read($url, $configuration = 'default', $user_agent = SIMPLEPIE_USERAGENT)
     {
         // Setup the object
         $sp = new SimplePie();
+
+        $sp->set_useragent($user_agent);
 
         // Configure it
         if(($cache = $this->setup_cache_directory($configuration)) !== false)
